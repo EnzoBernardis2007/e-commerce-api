@@ -7,23 +7,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ecommerce.ecommerceapi.dto.ModeratorRequestDTO;
-import com.ecommerce.ecommerceapi.service.ModeratorService;
+import com.ecommerce.ecommerceapi.dto.ProductRequestDTO;
+import com.ecommerce.ecommerceapi.service.ProductService;
 
 @RestController
-@RequestMapping("/moderator")
-public class ModeratorController {
+@RequestMapping("/product")
+public class ProductController {
 
     @Autowired
-    private ModeratorService moderatorService;
-    
+    private ProductService productService;
+
     @PostMapping
-    public ResponseEntity<?> createModerator(@RequestBody ModeratorRequestDTO moderator) {
-        if(moderatorService.createModerator(moderator)) {
-            return ResponseEntity.status(200).body(moderator);
-        } 
+    public ResponseEntity<?> createProduct(@RequestBody ProductRequestDTO product) {
+        if(productService.createProduct(product)) {
+            return ResponseEntity.status(200).body(product);
+        }
 
         return ResponseEntity.status(500).body("error");
     }
-    
 }

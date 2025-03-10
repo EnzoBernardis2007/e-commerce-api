@@ -39,14 +39,14 @@ public class ModeratorService {
     }
 
     private String generatePasswordHash(String password, byte[] passwordSalt) throws NoSuchAlgorithmException {
-        MessageDigest digest = MessageDigest.getInstance("SHA-256"); // Use o algoritmo adequado
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest((password + new String(passwordSalt)).getBytes());
-        return java.util.Base64.getEncoder().encodeToString(hash); // Codifica o hash para salvar no banco
+        return java.util.Base64.getEncoder().encodeToString(hash); 
     }
 
     private byte[] generateSalt() {
         java.security.SecureRandom random = new java.security.SecureRandom();
-        byte[] salt = new byte[16];  // Tamanho típico de salt
+        byte[] salt = new byte[16]; 
         random.nextBytes(salt);
         return salt;
     }
